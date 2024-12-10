@@ -1,0 +1,44 @@
+v1.4 12/21/1999 
+
+1. Added configure.
+-----------------------------------------------------------------------
+8/6/1999 v1.3 
+
+1. Added the getopt code so the SGI will build.
+
+-----------------------------------------------------------------------
+6/30/1999 v1.2 
+
+1. Added modify_all_hdf.pl  -- Run modify_vdata on all .hdf and .HDF files,
+                               w/ or w/o .gz or .Z extensions,
+                               within the current directory.
+
+2. Corrected the 'FIXME' concerning the buffer overflow.  Well, not so
+   much a correction but a bail out -- now, the program
+   aborts with an error message whenever a string will overflow the
+   metadata item.  The is mostly a concern with the PVL data structures:
+   CoreMetadata.0 and ArchiveMetadata.0.  I chose this solution rather
+   than modifying the field lengths, in order to not make a non-standard
+   TSDIS hdf file.
+
+3. Added version information to usage.
+
+4. modify_all_hdf.pl can handle single and double quote combinations
+   in the arguments (options).
+-----------------------------------------------------------------------
+6/22/1999 v1.1 
+
+1. Critical bug fixed where PVL structure was truncated.
+2. More modular.
+
+-----------------------------------------------------------------------
+6/11/1999 Initial version
+
+1. print_vdata
+2. modify_vdata
+
+	   /*FIXME: pass the field size to the change routine and
+                check that there is no overflow during the new
+                assignment -- especially true for strings.
+				*/
+

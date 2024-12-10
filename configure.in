@@ -1,0 +1,37 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(print_vdata.c)
+
+AM_INIT_AUTOMAKE(gv_metadata_tools, v1.4)
+AM_CONFIG_HEADER(config.h)
+
+dnl Default for GVS and friends.
+AC_PREFIX_DEFAULT(/usr/local/trmm/GVBOX)
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+
+dnl Checks for libraries.
+if test $prefix = NONE; then
+  prefix=$ac_default_prefix
+fi
+LIBDIR="-L$prefix/lib"
+LIBS="-lz -lm"
+
+AC_CHECK_LIB(jpeg,     jpeg_CreateCompress,,,$LIBDIR)
+AC_CHECK_LIB(df,       DFopen,             ,,$LIBDIR)
+AC_CHECK_LIB(mfhdf,    SDstart,            ,,$LIBDIR)
+
+LIBS="$LIBDIR $LIBS"
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(strdup strstr)
+
+AC_OUTPUT(Makefile)

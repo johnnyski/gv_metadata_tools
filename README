@@ -1,0 +1,33 @@
+v1.4 12/21/99
+These are TSDIS HDF/hdf manipulation programs.
+
+The programs are:
+
+    print_vdata  -- Print all metadata information, stored as vdata,
+                    to stdout.
+
+    modify_vdata -- Modify any field and value with in a vdata.
+                    This is an inplace modification.
+
+    modify_all_hdf.pl  -- Run 'modify_vdata' on all hdf|HDF (.gz|.Z) files
+                          in the current directory.  Command line arguments
+                          are exactly those for 'modify_vdata'.
+
+Installation:
+
+    configure
+    make install
+
+Requirements:
+
+    HDF 4.1*
+
+
+Questions:
+
+  help@trmm.gsfc.nasa.gov
+
+
+
+
+
